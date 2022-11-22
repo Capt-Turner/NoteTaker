@@ -1,5 +1,5 @@
 const express=require('express');
-const apiRoutes=require('./routes/apiRoutes');
+const apiRoutes=require('./routes/apiRoutes.js');
 const userRoutes=require('./routes/userRoutes');
 
 const app=express();
