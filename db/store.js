@@ -1,5 +1,5 @@
 const fs=require('fs');
-const uuid=require('uuid/vi');
+const uuid=require('uuid');
 const util=require('util');
 
 const readFileAsync=util.promisify(fs.readFile);
@@ -15,14 +15,14 @@ class Store{
     }
 
     async getNotes(){
-        const notes=await this.read();
-        let parsedNotes=[];
-        try{
-            parsedNotes=[].concat(JSON.parse(notes));
+        const notes = await this.read();
+        let parsedNotes;
+        try {
+            parsedNotes = [].concat(JSON.parse(notes));
+        } catch (err) {
+            parsedNotes = [];
         }
-        catch(err){
-            parsedNotes=[];
-        }
+        return parsedNotes;
     };
 
     async addNote(note){
