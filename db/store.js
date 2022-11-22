@@ -42,6 +42,12 @@ class Store{
         await this.write(updatedNotes);
         return newNote;
     };
+
+    async removeNote(id){
+        const notes = await this.getNotes();
+        const filteredNotes = notes.filter((note) => note.id !== id);
+        return await this.write(filteredNotes);
+    }
 }
 
 module.exports=new Store();
